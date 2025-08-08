@@ -29,4 +29,5 @@ class Sample{
     let b=new bank(10);
     console.log(b)
     b.balance=100;
-    console.log(b._balancen)
+    console.log(b)
+
