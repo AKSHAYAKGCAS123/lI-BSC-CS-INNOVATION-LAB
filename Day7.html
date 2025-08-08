@@ -3,80 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Document</title> 
     <style>
         .error{
-            color:red
+            color: red
         }
     </style>
 </head>
 <body>
     <h2>Form Validation</h2>
-    <form action="" onsubmit="return validateForm()">
-        <label for="phone">Phone Number</label>
-        <input type="text" id="phone" name="phone">
-        <div id="phoneError" class="error"></div><br><br>
-        <!--to validate email-->
-         <label for="email">Email</label>
-        <input type="email" id="email" name="email">
-        <div id="emailError" class="error"></div><br><br>
-        <!--name validation-->
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name">
-        <div id="nameError" class="error"></div><br><br>
-        <!-- password validation-->
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password">
-        <div id="passwordError" class="error"></div><br><br>
+    <!-- to validate phonenum-->
+    <form action="" onsubmit="return ValidateForm()">
+        <label for="phone">Phone Number</label><br>
+        <input time="text" id="phone" name="phone" autocomplete="tel"><br>
+        <div id="phoneError" class="error"></div>
+        <!-- to validate mail-->
+        <label for="email">email</label><br>
+        <input time="email" id="email" name="email" autocomplete="email"><br>
+        <div id="emailError" class="error"></div>
+        <!-- to validate name-->
+        <label for="name">name</label><br>
+        <input time="name" id="name" name="name" autocomplete="name"><br>
+        <div id="nameError" class="error"></div>
+        <!-- to validate password-->
+        <label for="password">password</label><br>
+        <input time="password" id="password" name="password" autocomplete="new-password"><br>
+        <div id="passwordError" class="error"></div>
         <button type="submit">submit</button>
-        
     </form>
     <script>
         function validateNum(phone){
-            const regex=/^[0-9]{10}$/;
+            const regex=/^[0-9]{10}$/
             if(phone.trim()=== ""){
-                return "textarea can't be empty";
+                return "textarea can't be empty"
             }
             if(!regex.test(phone)){
-                return "must be 10 digits";
+                return " must be 10 degits"
             }
-            return "Phone num is valid";
-
+            return"phone num is valid"
         }
-         function validateName(name){
-            const regex=/^[A-Za-z\s]+$/;
-            if(name.trim()=== ""){
-                return "name can't be empty";
+        function validateName(name) {
+            const regex = /^[A-Za-z\s]+$/;
+            if (name.trim() === ""){
+                return "Name cannot be empty";
             }
-            if(!regex.test(name)){
-                return "Invalid name";
+            if (!regex.text(name)) {
+                return "Name can only contain letters and spaces";
             }
-            return "Name is valid";
-
+            return "Name is valid"
         }
-        function validateEmail(email){
-            const regex=/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-            if(email.trim()=== ""){
-                return " email can't be empty";
+        // Validate Email
+        function validateEmail(email) {
+            const regex = /^[a-zA-Z0-9.%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (email.trim() === ""){
+                return "Email cannot be empty";
             }
-            if(!regex.test(email)){
+            if (!regex.test(email)) {
                 return "Invalid email format";
             }
-            return "Email is valid";
-            
+            return "Email is valid"
         }
-        function validatePassword(password){
-            const regex=/^(?=.*[A-Z])(?=.*\d).{8,}$/;
-            if(password.trim()=== ""){
-                return " password can't be empty";
+        //valid password
+        function validatePassword(password) {
+            const regex = /^(?=.*[A-Z])(?=.*\d).{8,}$/; 
+            if (password.trim() === ""){
+                return "password cannot be empty";
             }
-            if(!regex.test(password)){
-                return "password must be at least 8 characters";
+            if (!regex.test(password)) {
+                return "password must be at least 8 characters long,contain an uppercase and a digit";
             }
-            return "Password is  valid";
-            
+            return "Password is valid";
         }
-        function validateForm(){
+
+        function ValidateForm(){
             let phone=document.getElementById("phone").value;
             let name=document.getElementById("name").value;
             let email=document.getElementById("email").value;
@@ -85,21 +84,18 @@
             let phoneError=validateNum(phone);
             let nameError=validateName(name);
             let emailError=validateEmail(email);
-            let passwordError=validatepassword(password);
+            let passwordError=validatePassword(password);
+            
 
-            if(phoneError ==="Phone num is valid"&& nameError === "Name is valid"&& emailError === "Email is valid"&& passwordError ==="password is valid"){
-                return true;
-
-
-            }
-         document.getElementById("phoneError").innerText=phoneNumber ==="is valid" ?"":phoneError;
-         document.getElementById("nameError").innerText=phoneNumber ==="is valid" ?"":nameError;
-         document.getElementById("emailError").innerText=phoneNumber ==="is valid" ?"":emailError;
-         document.getElementById("passwordError").innerText=phoneNumber ==="is valid" ?"":passwordError;
-         return false;
+            if(phoneError === "phone num is vaild" && nameError === "Name is Valid" && emailError === "Email is valid" && password === "password is valid"){
+                return true; // allow submision
+              } 
+              
+        document.getElementById("phoneError").innerText=phoneError === " is valid" ? "" :phoneError; 
+        document.getElementById("nameError").innerText=nameError === " is valid" ? "" :nameError; 
+        document.getElementById("passwordError").innerText=passwordError === " is valid" ? "" :passwordError;  
+        return false;    
         }
-
-
     </script>
 </body>
 </html>
