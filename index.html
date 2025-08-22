@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <script src="./index.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 <body>
-  <form action>
-    <label for></label>Enter the first value:</label>
-    <input type="number"><br></br>
-    <label for></label>Enter the second value:</label>
-    <input type="number"><br></br>
+    <input type="text" placeholder="enter your list"id="inputValue">
+    <button onclick="addTask()">Add-Task</button>
+    <ul id="listContent"></ul>
+    <script>
+        function addTask(){
+            let textContent=document.getElementById("inputValue").value.trim();
+            if(textContent ==="") return;
+
+            let li=document.createElement("li");
+            li.textContent=textValue;
+            document.getElementById("listContent").appendChild(li);
+        }
+    </script>
+
     
-  </form>
-  
 </body>
 </html>
