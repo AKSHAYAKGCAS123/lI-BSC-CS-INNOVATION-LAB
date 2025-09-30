@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="slider">
+        <img src="image1.jpeg"class="slider-image" alt="Image 1" id="numberBox">
+        <button id="next">Next</button>
+        <button id="prev">Previous</button>
+
+    </div>
+    <script>
+        let numbers=["image1.jpeg","image2.jpeg","image3.jpeg",];
+        console.log(numbers.length);//5
+        let currentIndex=0
+
+        let numberBox=document.getElementById("numberBox");
+        let preBtn=document.getElementById("prev");
+        let nextBtn=document.getElementById("next");
+
+        nextBtn.addEventListener("click",()=>{
+            currentIndex=(currentIndex + 1)% numbers.length;
+            //0=0+1= 1%5=1
+            numberBox.src=numbers[currentIndex];
+        })
+
+        preBtn.addEventListener("click",()=>{
+            currentIndex=(currentIndex -1 + numbers.length) % numbers.length;
+            //5=9 % 5=4
+            //4=8%5=3
+            numberBox.src=numbers[currentIndex];
+        })
+        setInterval(()=>{
+            currentIndex=(currentIndex+1)%numbers.length;
+            numberBox.src=numbers[currentIndex]
+
+        },2000);
+    </script>
+    
+</body>
+</html>
