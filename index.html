@@ -1,25 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .card {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 10px;
+      display: inline-block;
+      width: 150px;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
-    <input type="text" placeholder="enter your list"id="inputValue">
-    <button onclick="addTask()">Add-Task</button>
-    <ul id="listContent"></ul>
-    <script>
-        function addTask(){
-            let textContent=document.getElementById("inputValue").value.trim();
-            if(textContent ==="") return;
 
-            let li=document.createElement("li");
-            li.textContent=textValue;
-            document.getElementById("listContent").appendChild(li);
-        }
-    </script>
+  <!-- Add the missing container -->
+  <div id="container"></div>
 
+  <!-- Wrap all JS inside a <script> tag -->
+  <script>
+    const myData = [
+      { name: "Dharaneesh", image: "https://img.freepik.com/premium-photo/mechanical-engineer-digital-avatar-generative-ai_934475-9196.jpg?w=2000" },
+      { name: "Naveen", image: "https://img.freepik.com/premium-photo/mechanical-engineer-digital-avatar-generative-ai_934475-9196.jpg?w=2000" },
+      { name: "Priya", image: "https://img.freepik.com/premium-photo/mechanical-engineer-digital-avatar-generative-ai_934475-9196.jpg?w=2000" },
+      { name: "Priya", image: "https://img.freepik.com/premium-photo/mechanical-engineer-digital-avatar-generative-ai_934475-9196.jpg?w=2000" },
+      { name: "Dharaneesh", image: "https://img.freepik.com/premium-photo/mechanical-engineer-digital-avatar-generative-ai_934475-9196.jpg?w=2000" },
+      { name: "Naveen", image: "https://img.freepik.com/premium-photo/mechanical-engineer-digital-avatar-generative-ai_934475-9196.jpg?w=2000" },
+      { name: "Priya", image: "https://img.freepik.com/premium-photo/mechanical-engineer-digital-avatar-generative-ai_934475-9196.jpg?w=2000" },
+      { name: "Priya", image: "https://img.freepik.com/premium-photo/mechanical-engineer-digital-avatar-generative-ai_934475-9196.jpg?w=2000" }
+    ];
+
+    const con = document.getElementById('container');
     
+    // Render local data
+    for (let i = 0; i < myData.length; i++) {
+      con.innerHTML += `
+        <div class='card'>
+          <h1>${myData[i].name}</h1>
+          <img src="${myData[i].image}" height="100px" />
+        </div>
+      `;
+    }
+
+    // Fetch and render fake store API data
+    fetch('https://fakestoreapi.com/products')
+      .then(res => res.json())
+      .then((data) => {
+        for (let i = 0; i < data.length; i++) {
+          con.innerHTML += `
+            <div class='card'>
+              <img src="${data[i].image}" height="100px" />
+              <h1>${data[i].id}</h1>
+            </div>
+          `;
+        }
+      })
+      .catch((err) => {
+        alert("Error occurred");
+        console.error(err);
+      });
+  </script>
+
 </body>
 </html>
